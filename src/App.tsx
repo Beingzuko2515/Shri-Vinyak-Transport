@@ -1,15 +1,85 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
+
+// Custom hook for scroll animations
+function useOnScreen(ref: React.RefObject<Element | null>) {
+  const [isIntersecting, setIntersecting] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIntersecting(entry.isIntersecting),
+      { threshold: 0.1 }
+    )
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+    return () => {
+      if (ref.current) {
+        if (ref.current) observer.unobserve(ref.current)
+      }
+    }
+  }, [ref])
+
+  return isIntersecting
+}
+
+function AnimatedSection({ children, className = "" }: { children: React.ReactNode, className?: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const isVisible = useOnScreen(ref)
+
+  return (
+    <div
+      ref={ref}
+      className={`${className} reveal ${isVisible ? 'active' : ''}`}
+    >
+      {children}
+    </div>
+  )
+}
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  
   const contactEmail = 'viveikverma.vv@gmail.com';
   const phoneNo = '+91 97603 44344';
+  const whatsappNo = '919760344344';
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleFaq = (index: number) => setActiveFaq(activeFaq === index ? null : index);
+
+  const faqs = [
+    {
+      q: "What areas do you cover?",
+      a: "We provide comprehensive pan-India coverage across all 28 states and 8 union territories, ensuring your cargo reaches even the most remote locations."
+    },
+    {
+      q: "Do you provide real-time tracking?",
+      a: "Yes, our entire fleet is equipped with advanced GPS technology, providing real-time tracking and 24/7 visibility through our mission control center."
+    },
+    {
+      q: "What types of industries do you serve?",
+      a: "We serve a diverse range of industries including Paper, Chemicals, Manufacturing, and Agriculture, with specialized solutions for each sector."
+    },
+    {
+      q: "How can I get an instant quote?",
+      a: "You can click 'Partner With Us' or reach out directly via WhatsApp for a quick, customized quote based on your specific requirements."
+    }
+  ];
 
   return (
     <div className="app">
+      {/* WhatsApp Floating Button */}
+      <a 
+        href={`https://wa.me/${whatsappNo}?text=Hello, I'm interested in your transport services.`}
+        className="whatsapp-float"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+      >
+        <span className="whatsapp-icon">💬</span>
+      </a>
+
       <nav className="navbar">
         <div className="container nav-content">
           <div className="logo">Shree Vinayak Transport Company</div>
@@ -17,9 +87,10 @@ function App() {
             <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
           </button>
           <ul className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
-            <li><a href="#about" onClick={() => setIsMenuOpen(false)}>Company</a></li>
+            <li><a href="#about" onClick={() => setIsMenuOpen(false)}>Services</a></li>
+            <li><a href="#stats" onClick={() => setIsMenuOpen(false)}>Trust</a></li>
             <li><a href="#partners" onClick={() => setIsMenuOpen(false)}>Partners</a></li>
-            <li><a href="#network" onClick={() => setIsMenuOpen(false)}>Network</a></li>
+            <li><a href="#faq" onClick={() => setIsMenuOpen(false)}>FAQ</a></li>
             <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
           </ul>
         </div>
@@ -27,69 +98,121 @@ function App() {
 
       <header className="hero">
         <div className="container">
-          <h1>Next-Gen Logistics Solutions</h1>
-          <p>
+          <h1 className="fade-up">Next-Gen Logistics Solutions</h1>
+          <p className="fade-up delay-1">
             Shree Vinayak Transport Company: Driving the future of Indian logistics with 
             precision, technology, and an unwavering commitment to safety.
           </p>
-          <a href="#contact" className="cta-button">Partner With Us</a>
+          <a href="#contact" className="cta-button fade-up delay-2">Partner With Us</a>
         </div>
       </header>
 
+      {/* Stats Section */}
+      <section id="stats" className="section stats-section">
+        <div className="container">
+          <div className="stats-grid">
+            <AnimatedSection className="stat-card">
+              <div className="stat-number">10+</div>
+              <div className="stat-label">Years Experience</div>
+            </AnimatedSection>
+            <AnimatedSection className="stat-card">
+              <div className="stat-number">500+</div>
+              <div className="stat-label">Cities Covered</div>
+            </AnimatedSection>
+            <AnimatedSection className="stat-card">
+              <div className="stat-number">10k+</div>
+              <div className="stat-label">Shipments Delivered</div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       <section id="about" className="section">
         <div className="container">
-          <h2 className="section-title">Established Excellence</h2>
-          <p className="section-subtitle">A legacy of trust, moving India's industry forward since 2014.</p>
+          <AnimatedSection>
+            <h2 className="section-title">Professional Services</h2>
+            <p className="section-subtitle">Comprehensive logistics solutions tailored for modern business needs.</p>
+          </AnimatedSection>
+          
           <div className="grid">
-            <div className="card">
-              <span className="card-icon">🛡️</span>
-              <h3>Premium Security</h3>
-              <p>Every shipment is protected by industry-leading safety protocols and full transit insurance.</p>
-            </div>
-            <div className="card">
+            <AnimatedSection className="card">
+              <span className="card-icon">🚛</span>
+              <h3>FTL Transport</h3>
+              <p>Full Truck Load solutions for bulk cargo with dedicated fleet management across India.</p>
+            </AnimatedSection>
+            <AnimatedSection className="card">
               <span className="card-icon">⚡</span>
-              <h3>Rapid Response</h3>
-              <p>Real-time GPS tracking and 24/7 mission control for total visibility of your cargo.</p>
-            </div>
-            <div className="card">
-              <span className="card-icon">🌍</span>
-              <h3>Global Standards</h3>
-              <p>Bringing international logistics best practices to the heart of the Indian transport sector.</p>
-            </div>
+              <h3>Express Delivery</h3>
+              <p>Time-critical logistics ensuring your high-priority cargo reaches its destination safely.</p>
+            </AnimatedSection>
+            <AnimatedSection className="card">
+              <span className="card-icon">🏢</span>
+              <h3>Warehousing</h3>
+              <p>Strategic storage solutions and inventory management to optimize your supply chain.</p>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       <section id="partners" className="section">
         <div className="container">
-          <h2 className="section-title">Strategic Partnerships</h2>
-          <p className="section-subtitle">We are the backbone of supply chains for India's leading industrial giants.</p>
+          <AnimatedSection>
+            <h2 className="section-title">Strategic Partnerships</h2>
+            <p className="section-subtitle">We are the backbone of supply chains for India's leading industrial giants.</p>
+          </AnimatedSection>
+          
           <div className="grid">
-            <div className="card partner-card">
+            <AnimatedSection className="card partner-card">
               <span className="card-icon">🏛️</span>
               <h3>Ram Potash Limited</h3>
               <p>Specialized logistics for India's leading producer of high-grade potash and mineral fertilizers.</p>
-            </div>
-            <div className="card partner-card">
+            </AnimatedSection>
+            <AnimatedSection className="card partner-card">
               <span className="card-icon">📄</span>
               <h3>Bindal Paper Mill</h3>
               <p>National distribution of premium industrial paper and high-volume paper bundles.</p>
-            </div>
-            <div className="card partner-card">
-              <span className="card-icon">🚛</span>
+            </AnimatedSection>
+            <AnimatedSection className="card partner-card">
+              <span className="card-icon">🏗️</span>
               <h3>Industrial Fleet</h3>
-              <p>High-capacity FTL (Full Truck Load) solutions for diverse industrial and manufacturing needs.</p>
-            </div>
+              <p>High-capacity solutions for diverse industrial manufacturing and construction needs.</p>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="section">
+        <div className="container">
+          <AnimatedSection>
+            <h2 className="section-title">Common Questions</h2>
+            <p className="section-subtitle">Everything you need to know about our services.</p>
+          </AnimatedSection>
+
+          <div className="faq-container">
+            {faqs.map((faq, index) => (
+              <AnimatedSection key={index} className={`faq-item ${activeFaq === index ? 'active' : ''}`}>
+                <div className="faq-question" onClick={() => toggleFaq(index)}>
+                  <h3>{faq.q}</h3>
+                  <span className="faq-toggle">{activeFaq === index ? '−' : '+'}</span>
+                </div>
+                <div className="faq-answer">
+                  <p>{faq.a}</p>
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
 
       <section id="network" className="section">
         <div className="container">
-          <h2 className="section-title">Pan-India Network</h2>
-          <p className="section-subtitle">Providing seamless logistics and transport solutions across all 28 states and 8 union territories of India.</p>
+          <AnimatedSection>
+            <h2 className="section-title">Pan-India Network</h2>
+            <p className="section-subtitle">Providing seamless logistics and transport solutions across all 28 states and 8 union territories of India.</p>
+          </AnimatedSection>
           
           <div className="region-container">
+            {/* ... region groups ... */}
             <div className="region-group">
               <h3 className="region-title">North India</h3>
               <div className="branch-grid">
@@ -135,27 +258,29 @@ function App() {
             </div>
           </div>
 
-          <div className="coverage-badge">
+          <AnimatedSection className="coverage-badge">
             Serving 500+ Cities Nationwide
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       <section id="contact" className="section">
         <div className="container">
-          <h2 className="section-title">Connect With Us</h2>
-          <p className="section-subtitle">Experience the new standard in logistics. Get a professional quote today.</p>
+          <AnimatedSection>
+            <h2 className="section-title">Connect With Us</h2>
+            <p className="section-subtitle">Experience the new standard in logistics. Get a professional quote today.</p>
+          </AnimatedSection>
           <div className="contact-grid">
-            <div className="contact-card">
+            <AnimatedSection className="contact-card">
               <span className="contact-icon">📞</span>
               <h3>Direct Line</h3>
               <p><a href={`tel:${phoneNo}`} style={{ color: 'white', textDecoration: 'none' }}>{phoneNo}</a></p>
-            </div>
-            <div className="contact-card">
+            </AnimatedSection>
+            <AnimatedSection className="contact-card">
               <span className="contact-icon">✉️</span>
               <h3>Corporate Email</h3>
               <p><a href={`mailto:${contactEmail}`} style={{ color: 'white', textDecoration: 'none' }}>{contactEmail}</a></p>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
