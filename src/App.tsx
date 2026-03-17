@@ -51,7 +51,7 @@ function App() {
   const faqs = [
     {
       q: "What areas do you cover?",
-      a: "We provide comprehensive pan-India coverage across all 28 states and 8 union territories, ensuring your cargo reaches even the most remote locations."
+      a: "We specialize in North India logistics, providing comprehensive coverage across Delhi NCR, Punjab, Haryana, Uttar Pradesh, Rajasthan, and Uttarakhand."
     },
     {
       q: "Do you provide real-time tracking?",
@@ -98,9 +98,9 @@ function App() {
 
       <header className="hero">
         <div className="container">
-          <h1 className="fade-up">Next-Gen Logistics Solutions</h1>
+          <h1 className="fade-up">North India's Logistics Leader</h1>
           <p className="fade-up delay-1">
-            Shree Vinayak Transport Company: Driving the future of Indian logistics with 
+            Shree Vinayak Transport Company: Driving the future of logistics in North India with 
             precision, technology, and an unwavering commitment to safety.
           </p>
           <a href="#contact" className="cta-button fade-up delay-2">Partner With Us</a>
@@ -116,8 +116,8 @@ function App() {
               <div className="stat-label">Years Experience</div>
             </AnimatedSection>
             <AnimatedSection className="stat-card">
-              <div className="stat-number">500+</div>
-              <div className="stat-label">Cities Covered</div>
+              <div className="stat-number">100+</div>
+              <div className="stat-label">North Indian Cities</div>
             </AnimatedSection>
             <AnimatedSection className="stat-card">
               <div className="stat-number">10k+</div>
@@ -131,24 +131,24 @@ function App() {
         <div className="container">
           <AnimatedSection>
             <h2 className="section-title">Professional Services</h2>
-            <p className="section-subtitle">Comprehensive logistics solutions tailored for modern business needs.</p>
+            <p className="section-subtitle">Comprehensive logistics solutions tailored for modern business needs in North India.</p>
           </AnimatedSection>
           
           <div className="grid">
             <AnimatedSection className="card">
               <span className="card-icon">🚛</span>
               <h3>FTL Transport</h3>
-              <p>Full Truck Load solutions for bulk cargo with dedicated fleet management across India.</p>
+              <p>Full Truck Load solutions for bulk cargo with dedicated fleet management across North Indian states.</p>
             </AnimatedSection>
             <AnimatedSection className="card">
               <span className="card-icon">⚡</span>
               <h3>Express Delivery</h3>
-              <p>Time-critical logistics ensuring your high-priority cargo reaches its destination safely.</p>
+              <p>Time-critical logistics ensuring your high-priority cargo reaches its destination safely and on time.</p>
             </AnimatedSection>
             <AnimatedSection className="card">
               <span className="card-icon">🏢</span>
               <h3>Warehousing</h3>
-              <p>Strategic storage solutions and inventory management to optimize your supply chain.</p>
+              <p>Strategic storage solutions and inventory management to optimize your supply chain in North India.</p>
             </AnimatedSection>
           </div>
         </div>
@@ -158,7 +158,7 @@ function App() {
         <div className="container">
           <AnimatedSection>
             <h2 className="section-title">Strategic Partnerships</h2>
-            <p className="section-subtitle">We are the backbone of supply chains for India's leading industrial giants.</p>
+            <p className="section-subtitle">The backbone of supply chains for the leading industrial giants of North India.</p>
           </AnimatedSection>
           
           <div className="grid">
@@ -207,59 +207,30 @@ function App() {
       <section id="network" className="section">
         <div className="container">
           <AnimatedSection>
-            <h2 className="section-title">Pan-India Network</h2>
-            <p className="section-subtitle">Providing seamless logistics and transport solutions across all 28 states and 8 union territories of India.</p>
+            <h2 className="section-title">North India Network</h2>
+            <p className="section-subtitle">Providing seamless logistics and transport solutions across major industrial hubs in North India.</p>
           </AnimatedSection>
           
           <div className="region-container">
-            {/* ... region groups ... */}
             <div className="region-group">
-              <h3 className="region-title">North India</h3>
+              <h3 className="region-title">Our Key Hubs</h3>
               <div className="branch-grid">
                 <div className="branch-item">Delhi NCR</div>
                 <div className="branch-item">Chandigarh</div>
                 <div className="branch-item">Ludhiana</div>
                 <div className="branch-item">Jaipur</div>
                 <div className="branch-item">Lucknow</div>
-              </div>
-            </div>
-
-            <div className="region-group" style={{ marginTop: '40px' }}>
-              <h3 className="region-title">West India</h3>
-              <div className="branch-grid">
-                <div className="branch-item">Mumbai</div>
-                <div className="branch-item">Pune</div>
-                <div className="branch-item">Ahmedabad</div>
-                <div className="branch-item">Surat</div>
-                <div className="branch-item">Nagpur</div>
-              </div>
-            </div>
-
-            <div className="region-group" style={{ marginTop: '40px' }}>
-              <h3 className="region-title">South India</h3>
-              <div className="branch-grid">
-                <div className="branch-item">Bangalore</div>
-                <div className="branch-item">Chennai</div>
-                <div className="branch-item">Hyderabad</div>
-                <div className="branch-item">Kochi</div>
-                <div className="branch-item">Coimbatore</div>
-              </div>
-            </div>
-
-            <div className="region-group" style={{ marginTop: '40px' }}>
-              <h3 className="region-title">East & Central India</h3>
-              <div className="branch-grid">
-                <div className="branch-item">Kolkata</div>
-                <div className="branch-item">Bhubaneswar</div>
-                <div className="branch-item">Guwahati</div>
-                <div className="branch-item">Indore</div>
-                <div className="branch-item">Raipur</div>
+                <div className="branch-item">Amritsar</div>
+                <div className="branch-item">Kanpur</div>
+                <div className="branch-item">Dehradun</div>
+                <div className="branch-item">Jodhpur</div>
+                <div className="branch-item">Agra</div>
               </div>
             </div>
           </div>
 
           <AnimatedSection className="coverage-badge">
-            Serving 500+ Cities Nationwide
+            Serving 100+ Cities in North India
           </AnimatedSection>
         </div>
       </section>
@@ -268,7 +239,7 @@ function App() {
         <div className="container">
           <AnimatedSection>
             <h2 className="section-title">Connect With Us</h2>
-            <p className="section-subtitle">Experience the new standard in logistics. Get a professional quote today.</p>
+            <p className="section-subtitle">Experience the new standard in North India logistics. Get a professional quote today.</p>
           </AnimatedSection>
           <div className="contact-grid">
             <AnimatedSection className="contact-card">
@@ -289,7 +260,7 @@ function App() {
         <div className="container footer-content">
           <div className="footer-brand">
             <div className="footer-logo">Shree Vinayak Transport Company</div>
-            <p className="footer-desc">Providing excellence in logistics and transport services across India with a focus on safety and reliability.</p>
+            <p className="footer-desc">Providing excellence in logistics and transport services across North India with a focus on safety and reliability.</p>
           </div>
           <div className="footer-info">
             <h4 className="footer-heading">Contact</h4>
