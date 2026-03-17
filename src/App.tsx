@@ -12,7 +12,7 @@ function App() {
     <div className="app">
       <nav className="navbar">
         <div className="container nav-content">
-          <div className="logo">Shri Vinyak Transport</div>
+          <div className="logo">Shree Vinayak Transport Company</div>
           <button className="mobile-menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
             <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
           </button>
@@ -29,7 +29,7 @@ function App() {
         <div className="container">
           <h1>Next-Gen Logistics Solutions</h1>
           <p>
-            Shri Vinyak Transport: Driving the future of Indian logistics with 
+            Shree Vinayak Transport Company: Driving the future of Indian logistics with 
             precision, technology, and an unwavering commitment to safety.
           </p>
           <a href="#contact" className="cta-button">Partner With Us</a>
@@ -163,7 +163,7 @@ function App() {
       <footer>
         <div className="container footer-content">
           <div className="footer-brand">
-            <div className="footer-logo">Shri Vinyak Transport</div>
+            <div className="footer-logo">Shree Vinayak Transport Company</div>
             <p className="footer-desc">Providing excellence in logistics and transport services across India with a focus on safety and reliability.</p>
           </div>
           <div className="footer-info">
@@ -172,7 +172,7 @@ function App() {
             <p className="footer-text">{contactEmail}</p>
           </div>
           <div className="footer-copy">
-            <p className="footer-text">© 2026 Shri Vinyak Transport</p>
+            <p className="footer-text">© 2026 Shree Vinayak Transport Company</p>
             <p className="footer-subtext">All Rights Reserved.</p>
           </div>
         </div>
