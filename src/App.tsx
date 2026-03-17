@@ -146,9 +146,9 @@ function App() {
               <p>Time-critical logistics ensuring your high-priority cargo reaches its destination safely and on time.</p>
             </AnimatedSection>
             <AnimatedSection className="card">
-              <span className="card-icon">🏢</span>
-              <h3>Warehousing</h3>
-              <p>Strategic storage solutions and inventory management to optimize your supply chain in North India.</p>
+              <span className="card-icon">💰</span>
+              <h3>Competitive Pricing</h3>
+              <p>Optimized routes and efficient fleet management to provide you with the most cost-effective rates in the industry.</p>
             </AnimatedSection>
           </div>
         </div>
