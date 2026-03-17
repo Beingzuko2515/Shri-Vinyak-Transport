@@ -68,10 +68,12 @@ function App() {
             <div className="card partner-card">
               <span className="card-icon">🏛️</span>
               <h3>Ram Potash Limited</h3>
+              <p>Specialized logistics for India's leading producer of high-grade potash and mineral fertilizers.</p>
             </div>
             <div className="card partner-card">
               <span className="card-icon">📄</span>
               <h3>Bindal Paper Mill</h3>
+              <p>National distribution of premium industrial paper and high-volume paper bundles.</p>
             </div>
             <div className="card partner-card">
               <span className="card-icon">🚛</span>
