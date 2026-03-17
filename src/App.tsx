@@ -1,19 +1,26 @@
+import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const contactEmail = 'viveikverma.vv@gmail.com';
   const phoneNo = '+91 97603 44344';
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <div className="app">
       <nav className="navbar">
         <div className="container nav-content">
           <div className="logo">Shri Vinyak Transport</div>
-          <ul className="nav-links">
-            <li><a href="#about">Company</a></li>
-            <li><a href="#partners">Partners</a></li>
-            <li><a href="#network">Network</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <button className="mobile-menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
+            <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
+          </button>
+          <ul className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
+            <li><a href="#about" onClick={() => setIsMenuOpen(false)}>Company</a></li>
+            <li><a href="#partners" onClick={() => setIsMenuOpen(false)}>Partners</a></li>
+            <li><a href="#network" onClick={() => setIsMenuOpen(false)}>Network</a></li>
+            <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -155,18 +162,18 @@ function App() {
 
       <footer>
         <div className="container footer-content">
-          <div>
+          <div className="footer-brand">
             <div className="footer-logo">Shri Vinyak Transport</div>
-            <p style={{ color: 'var(--text-muted)' }}>Providing excellence in logistics and transport services across India with a focus on safety and reliability.</p>
+            <p className="footer-desc">Providing excellence in logistics and transport services across India with a focus on safety and reliability.</p>
           </div>
-          <div>
-            <h4 style={{ color: 'white', marginBottom: '20px' }}>Contact</h4>
-            <p style={{ color: 'var(--text-muted)' }}>{phoneNo}</p>
-            <p style={{ color: 'var(--text-muted)' }}>{contactEmail}</p>
+          <div className="footer-info">
+            <h4 className="footer-heading">Contact</h4>
+            <p className="footer-text">{phoneNo}</p>
+            <p className="footer-text">{contactEmail}</p>
           </div>
-          <div style={{ textAlign: 'right' }}>
-            <p style={{ color: 'var(--text-muted)' }}>© 2026 Shri Vinyak Transport</p>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>All Rights Reserved.</p>
+          <div className="footer-copy">
+            <p className="footer-text">© 2026 Shri Vinyak Transport</p>
+            <p className="footer-subtext">All Rights Reserved.</p>
           </div>
         </div>
       </footer>

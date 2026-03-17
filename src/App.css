@@ -267,8 +267,104 @@ footer {
   color: white;
 }
 
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  position: relative;
+  transition: var(--transition);
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: white;
+  left: 0;
+  transition: var(--transition);
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { bottom: -8px; }
+
+.hamburger.open { background: transparent; }
+.hamburger.open::before { transform: rotate(45deg); top: 0; }
+.hamburger.open::after { transform: rotate(-45deg); bottom: 0; }
+
+/* Footer Classes */
+.footer-desc, .footer-text { color: var(--text-muted); }
+.footer-heading { color: white; margin-bottom: 20px; }
+.footer-subtext { color: var(--text-muted); font-size: 0.8rem; }
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  .hero h1 { font-size: 3.5rem; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-content { grid-template-columns: 1fr 1fr; }
+  .footer-copy { text-align: left; grid-column: span 2; }
+}
+
 @media (max-width: 768px) {
-  .hero h1 { font-size: 3rem; }
-  .footer-content { grid-template-columns: 1fr; gap: 40px; }
-  .nav-links { display: none; }
+  .mobile-menu-toggle { display: block; }
+  
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: var(--primary-bg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transition: 0.5s ease-in-out;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .nav-links.mobile-open {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.5rem;
+  }
+
+  .hero { padding: 140px 0 60px; }
+  .hero h1 { font-size: 2.8rem; }
+  .hero p { font-size: 1.1rem; }
+  
+  .section { padding: 60px 0; }
+  .section-title { font-size: 2.2rem; }
+  
+  .grid { grid-template-columns: 1fr; }
+  
+  .footer-content { grid-template-columns: 1fr; gap: 30px; }
+  .footer-copy { grid-column: span 1; }
+  .footer-copy { text-align: left; }
+
+  .branch-grid { grid-template-columns: repeat(2, 1fr); }
+  
+  .coverage-badge { width: 100%; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .logo { font-size: 1.2rem; }
+  .hero h1 { font-size: 2.2rem; }
+  .branch-grid { grid-template-columns: 1fr; }
+  .card { padding: 24px; }
 }
