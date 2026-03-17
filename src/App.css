@@ -531,4 +531,13 @@ footer {
   .hero h1 { font-size: 2.2rem; }
   .branch-grid { grid-template-columns: 1fr; }
   .card { padding: 24px; }
+  /* Adjustments for coverage-badge to improve mobile compatibility */
+  .coverage-badge {
+    font-size: 0.9rem; /* Slightly smaller font */
+    padding: 10px 15px; /* Slightly smaller horizontal padding */
+    width: 90%; /* Ensure it takes up a good portion of the width */
+    box-sizing: border-box; /* Include padding in the element's total width */
+    white-space: normal; /* Allow text to wrap to multiple lines */
+    word-break: break-word; /* Break words if necessary to prevent overflow */
+  }
 }
