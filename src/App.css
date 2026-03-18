@@ -53,7 +53,7 @@ body {
 }
 
 .logo {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: -1px;
   background: linear-gradient(to right, #fff, var(--accent));
@@ -180,51 +180,34 @@ body {
   border-top: 4px solid var(--accent);
 }
 
-/* Branch Grid */
-.branch-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.branch-item {
-  background: var(--glass);
-  padding: 20px;
-  border-radius: 16px;
-  text-align: center;
-  font-weight: 700;
-  border: 1px solid var(--glass-border);
-  transition: var(--transition);
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.branch-item:hover {
-  background: white;
-  color: var(--primary-bg);
+.fade-up {
+  animation: fadeUp 1s ease forwards;
 }
 
-.region-title {
-  font-size: 1.25rem;
-  margin-bottom: 24px;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  border-left: 4px solid var(--accent);
-  padding-left: 15px;
-}
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
 
-.coverage-badge {
-  display: inline-block;
-  margin-top: 60px;
-  padding: 12px 30px;
-  background: linear-gradient(to right, var(--accent), #ea580c);
-  color: white;
-  border-radius: 50px;
-  font-weight: 800;
-  font-size: 1.1rem;
-  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.2);
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Contact Grid */
@@ -356,15 +339,10 @@ footer {
   .footer-content { grid-template-columns: 1fr; gap: 30px; }
   .footer-copy { grid-column: span 1; }
   .footer-copy { text-align: left; }
-
-  .branch-grid { grid-template-columns: repeat(2, 1fr); }
-  
-  .coverage-badge { width: 100%; text-align: center; }
 }
 
 @media (max-width: 480px) {
-  .logo { font-size: 1.2rem; }
+  .logo { font-size: 1rem; }
   .hero h1 { font-size: 2.2rem; }
-  .branch-grid { grid-template-columns: 1fr; }
   .card { padding: 24px; }
 }
