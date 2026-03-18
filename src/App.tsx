@@ -27,9 +27,19 @@ function AnimatedSection({ children, className = "", delay = 0 }: { children: Re
   const ref = useRef<HTMLDivElement>(null)
   const isVisible = useOnScreen(ref)
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    ref.current.style.setProperty('--mouse-x', `${x}px`);
+    ref.current.style.setProperty('--mouse-y', `${y}px`);
+  }
+
   return (
     <div
       ref={ref}
+      onMouseMove={handleMouseMove}
       style={{ transitionDelay: `${delay}s` }}
       className={`${className} reveal ${isVisible ? 'active' : ''}`}
     >
@@ -178,7 +188,7 @@ function App() {
             <p className="footer-text">{phoneNo}</p>
             <p className="footer-text">{contactEmail}</p>
           </div>
-          <div className="footer-copy">
+          <div className="footer-subtext">
             <p className="footer-text">© 2026 Shree Vinayak Transport Company</p>
             <p className="footer-subtext">All Rights Reserved.</p>
           </div>
