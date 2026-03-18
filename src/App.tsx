@@ -23,13 +23,14 @@ function useOnScreen(ref: React.RefObject<Element | null>) {
   return isIntersecting
 }
 
-function AnimatedSection({ children, className = "" }: { children: React.ReactNode, className?: string }) {
+function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) {
   const ref = useRef<HTMLDivElement>(null)
   const isVisible = useOnScreen(ref)
 
   return (
     <div
       ref={ref}
+      style={{ transitionDelay: `${delay}s` }}
       className={`${className} reveal ${isVisible ? 'active' : ''}`}
     >
       {children}
@@ -48,6 +49,10 @@ function App() {
 
   return (
     <div className="app">
+      {/* Background Glows */}
+      <div className="bg-glow bg-glow-1"></div>
+      <div className="bg-glow bg-glow-2"></div>
+
       {/* WhatsApp Floating Button */}
       <a 
         href={`https://wa.me/${whatsappNo}?text=Hello, I'm interested in your all-India transport services.`}
@@ -95,17 +100,17 @@ function App() {
           </AnimatedSection>
           
           <div className="grid">
-            <AnimatedSection className="card">
+            <AnimatedSection className="card" delay={0.1}>
               <span className="card-icon">🚛</span>
               <h3>Pan-India FTL</h3>
               <p>Full Truck Load solutions for bulk cargo with dedicated fleet management across all Indian states and union territories.</p>
             </AnimatedSection>
-            <AnimatedSection className="card">
+            <AnimatedSection className="card" delay={0.2}>
               <span className="card-icon">⚡</span>
               <h3>Nationwide Express</h3>
               <p>Time-critical logistics ensuring your high-priority cargo reaches any destination in India safely and on time.</p>
             </AnimatedSection>
-            <AnimatedSection className="card">
+            <AnimatedSection className="card" delay={0.3}>
               <span className="card-icon">💰</span>
               <h3>Strategic Logistics</h3>
               <p>Optimized routes and efficient fleet management to provide the most cost-effective rates for long-haul transport.</p>
@@ -122,17 +127,17 @@ function App() {
           </AnimatedSection>
           
           <div className="grid">
-            <AnimatedSection className="card partner-card">
+            <AnimatedSection className="card partner-card" delay={0.1}>
               <span className="card-icon">🏛️</span>
               <h3>Ram Potash Limited</h3>
               <p>Specialized nationwide logistics for India's leading producer of high-grade potash and mineral fertilizers.</p>
             </AnimatedSection>
-            <AnimatedSection className="card partner-card">
+            <AnimatedSection className="card partner-card" delay={0.2}>
               <span className="card-icon">📄</span>
               <h3>Bindal Paper Mill</h3>
               <p>Pan-India distribution of premium industrial paper and high-volume paper bundles.</p>
             </AnimatedSection>
-            <AnimatedSection className="card partner-card">
+            <AnimatedSection className="card partner-card" delay={0.3}>
               <span className="card-icon">🏗️</span>
               <h3>Industrial Fleet</h3>
               <p>High-capacity solutions for diverse industrial manufacturing and construction needs on a national scale.</p>
@@ -148,12 +153,12 @@ function App() {
             <p className="section-subtitle">Experience the new standard in Indian logistics. Get a professional quote for any destination today.</p>
           </AnimatedSection>
           <div className="contact-grid">
-            <AnimatedSection className="contact-card">
+            <AnimatedSection className="contact-card" delay={0.1}>
               <span className="contact-icon">📞</span>
               <h3>Direct Line</h3>
               <p><a href={`tel:${phoneNo}`} style={{ color: 'white', textDecoration: 'none' }}>{phoneNo}</a></p>
             </AnimatedSection>
-            <AnimatedSection className="contact-card">
+            <AnimatedSection className="contact-card" delay={0.2}>
               <span className="contact-icon">✉️</span>
               <h3>Corporate Email</h3>
               <p><a href={`mailto:${contactEmail}`} style={{ color: 'white', textDecoration: 'none' }}>{contactEmail}</a></p>
