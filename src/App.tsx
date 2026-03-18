@@ -42,11 +42,23 @@ function App() {
   
   const contactEmail = 'viveikverma.vv@gmail.com';
   const phoneNo = '+91 97603 44344';
+  const whatsappNo = '919760344344';
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <div className="app">
+      {/* WhatsApp Floating Button */}
+      <a 
+        href={`https://wa.me/${whatsappNo}?text=Hello, I'm interested in your all-India transport services.`}
+        className="whatsapp-float"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+      >
+        <span className="whatsapp-icon">💬</span>
+      </a>
+
       <nav className="navbar">
         <div className="container nav-content">
           <div className="logo">Shree Vinayak Transport Company</div>
@@ -63,37 +75,40 @@ function App() {
 
       <header className="hero">
         <div className="container">
-          <h1 className="fade-up">North India's Logistics Leader</h1>
+          <h1 className="fade-up">India's Premier Logistics Partner</h1>
           <p className="fade-up delay-1">
-            Shree Vinayak Transport Company: Driving the future of logistics in North India with 
-            precision, technology, and an unwavering commitment to safety.
+            Shree Vinayak Transport Company: Providing seamless Pan-India logistics solutions with 
+            precision, technology, and an unwavering commitment to safety across every state.
           </p>
-          <a href="#contact" className="cta-button fade-up delay-2">Partner With Us</a>
+          <div className="hero-cta-group fade-up delay-2">
+            <a href="#contact" className="cta-button">Partner With Us</a>
+            <a href={`https://wa.me/${whatsappNo}?text=Hello, I'm interested in your transport services.`} className="cta-button secondary" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+          </div>
         </div>
       </header>
 
       <section id="about" className="section">
         <div className="container">
           <AnimatedSection>
-            <h2 className="section-title">Professional Services</h2>
-            <p className="section-subtitle">Comprehensive logistics solutions tailored for modern business needs in North India.</p>
+            <h2 className="section-title">All India Services</h2>
+            <p className="section-subtitle">Comprehensive logistics solutions tailored for modern business needs, now serving every corner of India.</p>
           </AnimatedSection>
           
           <div className="grid">
             <AnimatedSection className="card">
               <span className="card-icon">🚛</span>
-              <h3>FTL Transport</h3>
-              <p>Full Truck Load solutions for bulk cargo with dedicated fleet management across North Indian states.</p>
+              <h3>Pan-India FTL</h3>
+              <p>Full Truck Load solutions for bulk cargo with dedicated fleet management across all Indian states and union territories.</p>
             </AnimatedSection>
             <AnimatedSection className="card">
               <span className="card-icon">⚡</span>
-              <h3>Express Delivery</h3>
-              <p>Time-critical logistics ensuring your high-priority cargo reaches its destination safely and on time.</p>
+              <h3>Nationwide Express</h3>
+              <p>Time-critical logistics ensuring your high-priority cargo reaches any destination in India safely and on time.</p>
             </AnimatedSection>
             <AnimatedSection className="card">
               <span className="card-icon">💰</span>
-              <h3>Competitive Pricing</h3>
-              <p>Optimized routes and efficient fleet management to provide you with the most cost-effective rates in the industry.</p>
+              <h3>Strategic Logistics</h3>
+              <p>Optimized routes and efficient fleet management to provide the most cost-effective rates for long-haul transport.</p>
             </AnimatedSection>
           </div>
         </div>
@@ -103,24 +118,24 @@ function App() {
         <div className="container">
           <AnimatedSection>
             <h2 className="section-title">Strategic Partnerships</h2>
-            <p className="section-subtitle">The backbone of supply chains for the leading industrial giants of North India.</p>
+            <p className="section-subtitle">The backbone of supply chains for leading industrial giants across India.</p>
           </AnimatedSection>
           
           <div className="grid">
             <AnimatedSection className="card partner-card">
               <span className="card-icon">🏛️</span>
               <h3>Ram Potash Limited</h3>
-              <p>Specialized logistics for India's leading producer of high-grade potash and mineral fertilizers.</p>
+              <p>Specialized nationwide logistics for India's leading producer of high-grade potash and mineral fertilizers.</p>
             </AnimatedSection>
             <AnimatedSection className="card partner-card">
               <span className="card-icon">📄</span>
               <h3>Bindal Paper Mill</h3>
-              <p>National distribution of premium industrial paper and high-volume paper bundles.</p>
+              <p>Pan-India distribution of premium industrial paper and high-volume paper bundles.</p>
             </AnimatedSection>
             <AnimatedSection className="card partner-card">
               <span className="card-icon">🏗️</span>
               <h3>Industrial Fleet</h3>
-              <p>High-capacity solutions for diverse industrial manufacturing and construction needs.</p>
+              <p>High-capacity solutions for diverse industrial manufacturing and construction needs on a national scale.</p>
             </AnimatedSection>
           </div>
         </div>
@@ -130,7 +145,7 @@ function App() {
         <div className="container">
           <AnimatedSection>
             <h2 className="section-title">Connect With Us</h2>
-            <p className="section-subtitle">Experience the new standard in North India logistics. Get a professional quote today.</p>
+            <p className="section-subtitle">Experience the new standard in Indian logistics. Get a professional quote for any destination today.</p>
           </AnimatedSection>
           <div className="contact-grid">
             <AnimatedSection className="contact-card">
@@ -151,7 +166,7 @@ function App() {
         <div className="container footer-content">
           <div className="footer-brand">
             <div className="footer-logo">Shree Vinayak Transport Company</div>
-            <p className="footer-desc">Providing excellence in logistics and transport services across North India with a focus on safety and reliability.</p>
+            <p className="footer-desc">Providing excellence in logistics and transport services across all of India with a focus on safety and reliability.</p>
           </div>
           <div className="footer-info">
             <h4 className="footer-heading">Contact</h4>
