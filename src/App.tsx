@@ -27,19 +27,9 @@ function AnimatedSection({ children, className = "", delay = 0 }: { children: Re
   const ref = useRef<HTMLDivElement>(null)
   const isVisible = useOnScreen(ref)
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    ref.current.style.setProperty('--mouse-x', `${x}px`);
-    ref.current.style.setProperty('--mouse-y', `${y}px`);
-  }
-
   return (
     <div
       ref={ref}
-      onMouseMove={handleMouseMove}
       style={{ transitionDelay: `${delay}s` }}
       className={`${className} reveal ${isVisible ? 'active' : ''}`}
     >
@@ -50,6 +40,7 @@ function AnimatedSection({ children, className = "", delay = 0 }: { children: Re
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const appRef = useRef<HTMLDivElement>(null);
   
   const contactEmail = 'viveikverma.vv@gmail.com';
   const phoneNo = '+91 97603 44344';
@@ -57,8 +48,22 @@ function App() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (appRef.current) {
+        appRef.current.style.setProperty('--mouse-x', `${e.clientX}px`);
+        appRef.current.style.setProperty('--mouse-y', `${e.clientY}px`);
+      }
+    };
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+  }, []);
+
   return (
-    <div className="app">
+    <div className="app" ref={appRef}>
+      {/* Background Spotlight */}
+      <div className="global-spotlight"></div>
+      
       {/* Background Glows */}
       <div className="bg-glow bg-glow-1"></div>
       <div className="bg-glow bg-glow-2"></div>

@@ -30,6 +30,22 @@ body {
   overflow-x: hidden;
 }
 
+/* Global Background Spotlight */
+.global-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+    rgba(249, 115, 22, 0.05), 
+    transparent 80%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
 /* Moving Background Glows */
 .bg-glow {
   position: fixed;
@@ -37,7 +53,7 @@ body {
   height: 50vw;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
-  z-index: -1;
+  z-index: -2;
   filter: blur(80px);
   pointer-events: none;
   animation: float 20s infinite alternate;
@@ -267,9 +283,9 @@ body {
   width: 100%;
   height: 100%;
   background: radial-gradient(
-    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-    rgba(249, 115, 22, 0.15), 
-    transparent 40%
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+    rgba(249, 115, 22, 0.1), 
+    transparent 60%
   );
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -477,8 +493,9 @@ footer {
     font-size: 1.8rem;
   }
 
-  .hero { padding: 160px 0 80px; }
-  .hero h1 { font-size: 3rem; }
+  .hero { padding: 140px 0 60px; }
+  .hero h1 { font-size: 2.8rem; }
+  .hero p { font-size: 1.1rem; margin-bottom: 32px; }
   
   .hero-cta-group {
     flex-direction: column;
@@ -489,25 +506,35 @@ footer {
   .cta-button {
     width: 100%;
     max-width: 320px;
+    padding: 16px 32px;
   }
   
-  .section { padding: 80px 0; }
-  .section-title { font-size: 2.8rem; }
+  .section { padding: 60px 0; }
+  .section-title { font-size: 2.5rem; margin-bottom: 12px; }
+  .section-subtitle { font-size: 1.1rem; margin-bottom: 40px; }
   
-  .grid { grid-template-columns: 1fr; }
+  .grid { gap: 24px; }
+  .card { padding: 32px; }
   
-  .footer-content { grid-template-columns: 1fr; gap: 40px; }
+  .footer-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .footer-logo { font-size: 1.4rem; }
 
   .whatsapp-float {
-    bottom: 30px;
-    right: 30px;
-    width: 55px;
-    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  .global-spotlight {
+    display: none; /* Disable spotlight on mobile to save performance */
   }
 }
 
 @media (max-width: 480px) {
-  .logo { font-size: 1.2rem; }
-  .hero h1 { font-size: 2.5rem; }
-  .section-title { font-size: 2.2rem; }
+  .logo { font-size: 1.1rem; }
+  .hero h1 { font-size: 2.2rem; }
+  .section-title { font-size: 2rem; }
+  .container { padding: 0 20px; }
 }
